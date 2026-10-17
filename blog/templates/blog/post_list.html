@@ -9,8 +9,8 @@
     <ul>
         {% for post in posts %}
             <li>
-                <h2>{{ post.title }}</h2>
-                <p>{{ post.published_date }}</p>
+                <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+                — {{ post.published_date }} ({{ post.author.name }})
             </li>
         {% empty %}
             <li>Постів поки немає.</li>

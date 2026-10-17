@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <p>Автор: {{ post.author.name }}</p>
+    <p>Дата публікації: {{ post.published_date }}</p>
+    <p>{{ post.content }}</p>
+    <h2>Коментарі</h2>
+    <ul>
+        {% for comment in post.comments.all %}
+            <li>{{ comment.author_name }}: {{ comment.text }} ({{ comment.created_date }})</li>
+        {% empty %}
+            <li>Коментарів немає.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'post_list' %}">Назад до списку</a>
+</body>
+</html>
